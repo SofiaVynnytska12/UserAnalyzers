@@ -1,12 +1,12 @@
 import random
 import uuid
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 
-# Функція для генерації випадкових даних для різних типів подій
+# Генерація випадкових даних для подій
 def generate_data():
     event_type = random.choice(["Login", "Click", "Search", "Comment"])
-    timestamp = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')
+    timestamp = datetime.now(timezone.utc).isoformat()
 
     if event_type == "Login":
         return {
@@ -17,6 +17,7 @@ def generate_data():
             "country": random.choice(["US", "UA", "PL", "GB", "DE"]),
             "timestamp": timestamp
         }
+
     elif event_type == "Click":
         return {
             "event_type": event_type,
@@ -25,25 +26,32 @@ def generate_data():
             "page_url": f"https://example.com/page{random.randint(1, 10)}",
             "timestamp": timestamp
         }
+
     elif event_type == "Search":
         return {
             "event_type": event_type,
             "user_id": str(uuid.uuid4()),
-            "search_query": random.choice(["data analysis", "machine learning", "big data", "cloud computing", "AI trends"]),
+            "search_query": random.choice([
+                "data analysis", "machine learning", "big data",
+                "cloud computing", "AI trends", "data engineering"
+            ]),
             "timestamp": timestamp
         }
+
     elif event_type == "Comment":
         return {
             "event_type": event_type,
             "user_id": str(uuid.uuid4()),
             "username": f"user_{random.randint(1, 1000)}",
-            "comment_text": random.choice(["Great post!", "I disagree", "Nice article!", "Thanks for sharing"]),
+            "comment_text": random.choice([
+                "Great post!", "I disagree", "Nice article!", "Thanks for sharing"
+            ]),
             "post_id": str(uuid.uuid4()),
             "timestamp": timestamp
         }
 
-# Функція для перетворення даних у JSON
-def generate_json_data():
+# Генерація ключа та значення у форматі JSON
+def generate_key_value():
     data = generate_data()
     key = {
         "timestamp": data["timestamp"],
