@@ -1,7 +1,16 @@
 # Web Application Data Generator
+# UserAnalyzers
 
-## Project Goal
-This project aims to simulate a continuous stream of user activity data from a fictional web application. The goal is to generate realistic random data and send it to a processing system for further analysis, simulating the behavior of a real web application without building an actual application.
+## Project Description
+UserAnalyzers is a system for generating, storing, and processing user activity data from a fictional web application. It simulates user actions, stores them in a database, and streams them for analysis.
+
+## Technologies
+- Python: Application logic and data generation.
+- Kafka: Data streaming.
+- MySQL: Data storage.
+- Docker: Service containerization.
+- Liquibase: Database migrations.
+- JSON: Data structuring.
 
 ## Data Overview
 The following user activity data will be processed:
@@ -12,20 +21,22 @@ The following user activity data will be processed:
 
 The data is small, randomly generated, and sent as a stream.
 
-## Technologies
-- **Python** (latest versions): for random data generation and flow control
-- **Kafka** (latest versions): for processing data streams and message queues
-- **JSON** (standard): for structuring data in a simple, readable format
-- **Docker** (latest versions): for containerizing applications and services
-
 ## Libraries
 - **Data Libraries**:
-- *Faker*: for generating realistic fake data (e.g. names, email addresses, countries)
 - *Random*: for generating random values ​​(e.g. timestamps, IDs)
 - **Helper Libraries and Tools**:
 - *kafka-python*: for integrating with Kafka and sending messages
 - *json*: for encoding data into JSON format
 - *datetime*: for managing timestamps in the data generation loop
+- Plugins and database connectors
 
-## How it will work
-The system runs a loop that generates random data about actions user every few seconds, packages them into JSON, and sends them to a Kafka topic. From there, the data can be extracted for processing or analysis.
+  ## Branch Contributions
+- **US-1_Create_Readme_file**: Initial project documentation.
+- **US-2_Launch_Kafka_in_Docker**: Kafka and Zookeeper setup in Docker.
+- **US-3_Implement_data_generation_and_publishing_into_Kafka**: User activity data generation and streaming to Kafka.
+- **US-5_Launch_Database_in_Docker**: MySQL setup in Docker with test user creation.
+- **US-7_Add_migrations_for_DB_schema_creation**: Database schema migrations using Liquibase.
+- **US-8_dockerize_the_application**: Application containerization with environment variable support.
+  
+ ## How it Works
+The system periodically generates random user activity data, formats it as JSON, and sends it to a Kafka topic for further processing or analysis. Data is stored in a database with a predefined schema and can be accessed for analysis.
