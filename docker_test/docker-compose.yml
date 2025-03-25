@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    environment:
+      - SCRIPT_NAME=${SCRIPT_NAME:-test.py}
+      - TEST_VARIABLE=${TEST_VARIABLE:-default_value}
+    env_file:
+      - .env
