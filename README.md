@@ -2,7 +2,7 @@
 # UserAnalyzers
 
 ## Project Description
-UserAnalyzers is a system for generating, storing, and processing user activity data from a fictional web application. It simulates user actions, stores them in a database, and streams them for analysis.
+Web Application Data Generator a system for generating, storing, and processing user activity data from a fictional web application. It simulates user actions, stores them in a database, and streams them for analysis.
 
 ## Technologies
 - Python: Application logic and data generation.
