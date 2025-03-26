@@ -6,6 +6,12 @@ databaseChangeLog:
         - createTable:
             tableName: login_events
             columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
               - column: { name: event_type, type: varchar(50) }
               - column: { name: user_id, type: int }
               - column: { name: username, type: varchar(100) }
@@ -20,6 +26,12 @@ databaseChangeLog:
         - createTable:
             tableName: click_events
             columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
               - column: { name: event_type, type: varchar(50) }
               - column: { name: user_id, type: int }
               - column: { name: element_id, type: varchar(100) }
