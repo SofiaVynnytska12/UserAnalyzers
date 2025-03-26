@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Documentation.md
 #Launching MySQL Docker Database on a local computer (localhost)
 
 This is a project to launch a MySQL database in Docker, test connection, and create a test users with different levels of access.
