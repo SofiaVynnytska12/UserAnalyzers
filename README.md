@@ -62,3 +62,4 @@ To stop and remove Kafka and Zookeeper containers, run:
 ```sh
 docker-compose down
 ```
+
