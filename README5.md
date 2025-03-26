@@ -40,4 +40,3 @@ The data is small, randomly generated, and sent as a stream.
   
  ## How it Works
 The system periodically generates random user activity data, formats it as JSON, and sends it to a Kafka topic for further processing or analysis. Data is stored in a database with a predefined schema and can be accessed for analysis.
-
