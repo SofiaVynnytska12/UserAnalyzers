@@ -1,75 +1,71 @@
 # Dockerized Python Applications
 
-This project contains test Python application (`test.py`) that demonstrate environment variable injection within a Docker container.
-Let's see how it works!
+This project contains a test Python application (`test.py`) that demonstrates how to pass environment variables into a Docker container. It's a simple example, but it helps understand the basics of working with Docker.
 
-## Features
-- **Dockerfile** - to containerize the application / applications.
-- **Docker Compose** configuration for easy setup and running (you need to use just one line of code to build and start your Docker).
-- **Environment Variable** (`TEST_VARIABLE`) to test dynamic values.
-- **Script Execution** via `SCRIPT_NAME` variable.
+## What's Included
+- **Dockerfile** — used to build a container with the application.
+- **Docker Compose** — makes it easy to run the project (just one command, and everything works!).
+- **Environment Variables** — we use `TEST_VARIABLE` to pass dynamic values.
+- **Script Execution** — you can specify which script to run using `SCRIPT_NAME`.
 
-## Prerequisites
+## Requirements
+Before running the project, make sure you have installed:
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Project Structure
 ```
 .
-├── test.py             # Test application
-├── Dockerfile          # Docker configuration file
-├── docker-compose.yml  # Docker Compose configuration
-├── .dockerignore       # Files to ignore in Docker builds
-├── .env                # Environment variable definitions
+├── test.py             # Test Python script
+├── Dockerfile          # Configuration for building the container
+├── docker-compose.yml  # File for running with Docker Compose
+├── .dockerignore       # File to exclude unnecessary files from the container
+├── .env                # File with environment variables
 └── README.md           # This documentation
 ```
 
-## Running the Application
+## How to Run
 
-### 1. Build and Run with Docker Compose
+### 1. Run with Docker Compose
 ```sh
 docker-compose up --build
 ```
-This will build the container and start it using environment variables defined in `.env`.
+This command will build the container and run it using environment variables from `.env`.
 
-### 2. Running with Custom Environment Variables
-To override default values, modify `.env` or use:
+### 2. Run with Custom Environment Variables
+You can modify `.env` or pass variables directly:
 ```sh
 docker-compose up --build -d
-TEST_VARIABLE="Custom value" SCRIPT_NAME=test.py docker-compose up
+TEST_VARIABLE="TEST_VAR" SCRIPT_NAME=test.py docker-compose up
 ```
 
-### 3. Running a Container Manually
-If you prefer not to use Docker Compose:
+### 3. Run Manually Without Docker Compose
+If you prefer not to use Compose:
 ```sh
 docker build -t my_python_app .
-docker run --rm -e TEST_VARIABLE="Custom message" -e SCRIPT_NAME=test.py my_python_app
+docker run --rm -e TEST_VARIABLE="SOME_VARIABLE" -e SCRIPT_NAME=test.py my_python_app
 ```
 
-## Expected Output
-When the container starts, you should see:
+## Expected Console Output
+When the container starts, you should see something like:
 ```
-You are inside the container and it's test! The TEST_VARIABLE is: TEST_VARIABLE
+You are inside the container, and this is a test! TEST_VARIABLE value: TEST_VARIABLE
 ```
 
-## Notes
-- By default, `test.py` runs (as set in `.env`).
-- Modify `SCRIPT_NAME` to run a different script.
-- Change `TEST_VARIABLE` for custom messages.
-- Hope this is informative Readme file
+## Useful Notes
+- By default, `test.py` runs, but you can specify a different script using `SCRIPT_NAME`.
+- `TEST_VARIABLE` can be changed to display custom messages.
+- It's quite simple but helps to grasp Docker basics.
 
-## Cleanup
-To stop and remove containers:
+## How to Stop and Remove Containers
+To stop and remove the container:
 ```sh
 docker-compose down
 ```
-To remove images:
+If you need to remove the image itself:
 ```sh
 docker rmi my_python_app
 ```
 
 ## License
 MIT License
-
-
-

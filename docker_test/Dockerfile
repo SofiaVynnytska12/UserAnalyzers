@@ -2,11 +2,10 @@ FROM python:3.11
 
 WORKDIR /app
 
-COPY . /app
+COPY requirements.txt .
 
-RUN if [ -s requirements.txt ]; then pip install --no-cache-dir -r requirements.txt; fi
+RUN pip install --no-cache-dir -r requirements.txt || echo "No requirements.txt found!"
 
-ENV SCRIPT_NAME=test.py
+COPY . .
 
 CMD ["sh", "-c", "python $SCRIPT_NAME"]
-
