@@ -41,3 +41,4 @@ python kafka_consumer/consumer.py
 Received allowed event: {'event_type': 'Click', 'user_id': '...', 'timestamp': '...'}
 Filtered out event: Search
 ```
+
