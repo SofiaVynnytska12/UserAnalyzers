@@ -1,0 +1,5 @@
+To install Python Plugin for MySQL operations you should to run this code in your terminal:
+pip install mysql-connector-python
+OR install this plugin in PyCharm (or in a different programming environment) in operational menu
+import mysql.connector
+from mysql.connector import Error
